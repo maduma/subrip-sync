@@ -1,16 +1,18 @@
 # Sync SubRip subtitle with audio
 ```
 > subrip-sync -h
-usage: subrip-sync [-h] filename lag
+usage: subrip-sync [-h] [--backup | --no-backup] filename lag
 
 Sync SubRip subtitle with audio
 
 positional arguments:
-  filename    SubRip (.srt) subtitle file. UFT-8 encoding
-  lag         lag in milliseconds. eg: 220, -150, +350
+  filename              SubRip subtitle file (.srt). UFT-8 encoding
+  lag                   lag in milliseconds. eg: 220, -150, +350
 
 options:
-  -h, --help  show this help message and exit
+  -h, --help            show this help message and exit
+  --backup, --no-backup
+                        create a backup file (.bak)
 ```
 
 ## run test using uv
