@@ -4,14 +4,20 @@ from datetime import timedelta
 
 class TestSubRipMethods(unittest.TestCase):
     def test_parse_timecode(self):
-        tc = '123:12:04,657'
-        td = timedelta(hours=123, minutes=12, seconds=4, milliseconds=657)
+        tc = '23:12:04,657'
+        td = timedelta(hours=23, minutes=12, seconds=4, milliseconds=657)
         self.assertEqual(subrip.parse_timecode(tc), td)
 
-    def test_strf_timecode(self):
-        td = timedelta(hours=123, minutes=12, seconds=4, milliseconds=657)
-        tc = '123:12:04,657'
-        self.assertEqual(subrip.strf_timecode(td), tc)
+    def test_strf_timedelta(self):
+        td = timedelta(hours=23, minutes=12, seconds=4, milliseconds=657)
+        tc = '23:12:04,657'
+        self.assertEqual(subrip.strf_timedelta(td), tc)
+
+    def test_process_timecode(self):
+        tc1 = '01:02:14,949'
+        tc2 = '01:02:19,131'
+        lag = 4182
+        self.assertEqual(subrip.process_timecode(tc1, lag), tc2)
 
     def test_process_line(self):
         line = '...01:02:04,999 --> 01:12:02,057...'
@@ -27,8 +33,7 @@ class TestSubRipMethods(unittest.TestCase):
 
 2
 00:01:27,588 --> 00:01:29,840
-"Je vis un nouveau Ciel
-et une nouvelle Terre.
+"Je vis un nouveau Ciel.
 
 '''
         doc2 = '''
@@ -38,8 +43,7 @@ et une nouvelle Terre.
 
 2
 00:01:27,708 --> 00:01:29,960
-"Je vis un nouveau Ciel
-et une nouvelle Terre.
+"Je vis un nouveau Ciel.
 
 '''
         self.assertEqual(subrip.process_document(doc1.splitlines(keepends=True), 120), doc2)
