@@ -1,7 +1,4 @@
 # Sync SubRip subtitle with audio
-
-Config file is save to $ENV:HOMEPATH/.srtsync.json
-
 ```
 > subrip-sync -h
 usage: subrip-sync [-h] filename lag
