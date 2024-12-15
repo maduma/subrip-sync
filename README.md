@@ -25,3 +25,12 @@ uv run python -m unittest discover -s src
 ```
 uv run subrip-sync -h
 ```
+
+## build program using uv
+```
+> uv build
+Building source distribution...
+Building wheel from source distribution...
+Successfully built dist\subrip_sync-0.1.0.tar.gz
+Successfully built dist\subrip_sync-0.1.0-py3-none-any.whl
+```
