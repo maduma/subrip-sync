@@ -1,0 +1,17 @@
+[project]
+name = "subrip-sync"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { email = "maduma@pt.lu" }
+]
+requires-python = ">=3.13"
+dependencies = []
+
+[project.scripts]
+subrip-sync = "subrip_sync.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
