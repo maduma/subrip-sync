@@ -12,7 +12,7 @@ positional arguments:
 options:
   -h, --help            show this help message and exit
   --backup, --no-backup
-                        create a backup file (.bak)
+                        create a backup file (.bak), default
 ```
 
 ## run test using uv
