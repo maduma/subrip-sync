@@ -34,3 +34,5 @@ Building wheel from source distribution...
 Successfully built dist\subrip_sync-0.1.0.tar.gz
 Successfully built dist\subrip_sync-0.1.0-py3-none-any.whl
 ```
+
+see https://docs.astral.sh/uv/
