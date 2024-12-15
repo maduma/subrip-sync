@@ -1,7 +1,7 @@
 [project]
 name = "subrip-sync"
 version = "0.1.0"
-description = "Add your description here"
+description = "Sync SubRip subtitle with audio"
 readme = "README.md"
 authors = [
     { email = "maduma@pt.lu" }

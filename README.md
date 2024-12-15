@@ -15,3 +15,13 @@ positional arguments:
 options:
   -h, --help  show this help message and exit
 ```
+
+## run test using uv
+```
+uv run python -m unittest discover -s src
+```
+
+## run program using uv
+```
+uv run subrip-sync -h
+```
