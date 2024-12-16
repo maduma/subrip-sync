@@ -1,17 +1,16 @@
 import unittest
 from . import subrip
-from datetime import timedelta
 
 class TestSubRipMethods(unittest.TestCase):
     def test_parse_timecode(self):
         tc = '23:12:04,657'
-        td = timedelta(hours=23, minutes=12, seconds=4, milliseconds=657)
-        self.assertEqual(subrip.parse_timecode(tc), td)
+        duration = 23 * 3600_000 + 12 * 60_000 + 4 * 1000 + 657
+        self.assertEqual(subrip.parse_timecode(tc), duration)
 
-    def test_strf_timedelta(self):
-        td = timedelta(hours=23, minutes=12, seconds=4, milliseconds=657)
+    def test_strf_duration(self):
+        duration = 23 * 3600_000 + 12 * 60_000 + 4 * 1000 + 657
         tc = '23:12:04,657'
-        self.assertEqual(subrip.strf_timedelta(td), tc)
+        self.assertEqual(subrip.strf_duration(duration), tc)
 
     def test_process_timecode(self):
         tc1 = '01:02:14,949'
