@@ -2,8 +2,8 @@ import re
 
 def parse_timecode(timecode):
     mult = [3600_000, 60_000, 1000, 1]
-    fields = [e.split(':') for e in timecode.split(',')]
-    values = [int(e) for e in fields[0] + fields[1]]
+    l1, l2 = [e.split(':') for e in timecode.split(',')]
+    values = [int(e) for e in l1 + l2]
     return sum([i * j for (i, j) in zip(mult, values)])
 
 def strf_duration(duration):
