@@ -17,7 +17,7 @@ def process_timecode(timecode, lag):
     timestamp = parse_timecode(timecode)
     return strf_timestamp(timestamp + lag)
 
-pattern = re.compile(r'\d{2}:\d{2}:\d{2},\d{3}')
+pattern = re.compile(r'\d+:\d{2}:\d{2},\d{3}')
 def process_line(line, lag):
     return pattern.sub(lambda m: process_timecode(m.group(0), lag), line)
 

@@ -12,6 +12,11 @@ class TestSubRipMethods(unittest.TestCase):
         tc = '23:12:04,657'
         self.assertEqual(subrip.strf_timestamp(timestamp), tc)
 
+    def test_strf_timestamp_big(self):
+        timestamp = 223 * 3600_000 + 2 * 60_000 + 4 * 1000 + 57
+        tc = '223:02:04,057'
+        self.assertEqual(subrip.strf_timestamp(timestamp), tc)
+
     def test_process_timecode(self):
         tc1 = '01:02:14,949'
         tc2 = '01:02:19,131'
