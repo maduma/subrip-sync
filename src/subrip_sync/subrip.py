@@ -1,21 +1,21 @@
 import re
 
 def parse_timecode(timecode):
-    mult = [3600_000, 60_000, 1000, 1]
+    factors = [3600_000, 60_000, 1000, 1]
     l1, l2 = [e.split(':') for e in timecode.split(',')]
     values = [int(e) for e in l1 + l2]
-    return sum([i * j for (i, j) in zip(mult, values)])
+    return sum([i * j for (i, j) in zip(factors, values)])
 
-def strf_duration(duration):
-    microseconds = duration % 1000
-    seconds = duration // 1000 % 60
-    minutes = duration // 60_000 % 60
-    hours = duration // 3600_000
-    return f'{hours:02d}:{minutes:02d}:{seconds:02d},{microseconds:03d}'
+def strf_timestamp(timestamp):
+    milliseconds = timestamp % 1000
+    seconds = timestamp // 1000 % 60
+    minutes = timestamp // 60_000 % 60
+    hours = timestamp // 3600_000
+    return f'{hours:02d}:{minutes:02d}:{seconds:02d},{milliseconds:03d}'
 
 def process_timecode(timecode, lag):
-    duration = parse_timecode(timecode)
-    return strf_duration(duration + lag)
+    timestamp = parse_timecode(timecode)
+    return strf_timestamp(timestamp + lag)
 
 pattern = re.compile(r'\d{2}:\d{2}:\d{2},\d{3}')
 def process_line(line, lag):

@@ -4,13 +4,13 @@ from . import subrip
 class TestSubRipMethods(unittest.TestCase):
     def test_parse_timecode(self):
         tc = '23:12:04,657'
-        duration = 23 * 3600_000 + 12 * 60_000 + 4 * 1000 + 657
-        self.assertEqual(subrip.parse_timecode(tc), duration)
+        timestamp = 23 * 3600_000 + 12 * 60_000 + 4 * 1000 + 657
+        self.assertEqual(subrip.parse_timecode(tc), timestamp)
 
-    def test_strf_duration(self):
-        duration = 23 * 3600_000 + 12 * 60_000 + 4 * 1000 + 657
+    def test_strf_timestamp(self):
+        timestamp = 23 * 3600_000 + 12 * 60_000 + 4 * 1000 + 657
         tc = '23:12:04,657'
-        self.assertEqual(subrip.strf_duration(duration), tc)
+        self.assertEqual(subrip.strf_timestamp(timestamp), tc)
 
     def test_process_timecode(self):
         tc1 = '01:02:14,949'
