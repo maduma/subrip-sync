@@ -2,8 +2,8 @@ import re
 
 def parse_timecode(timecode):
     factors = [3600_000, 60_000, 1000, 1]
-    l1, l2 = [e.split(':') for e in timecode.split(',')]
-    values = [int(e) for e in l1 + l2]
+    l = (s.split(':') for s in timecode.split(','))
+    values = [int(e) for sublist in l for e in sublist]
     return sum([i * j for (i, j) in zip(factors, values)])
 
 def strf_timestamp(timestamp):
