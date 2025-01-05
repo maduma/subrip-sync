@@ -1,6 +1,6 @@
 import argparse
 from pathlib import Path
-from . import subrip
+from .subrip import process_document
 
 def parse_args():
     parser = argparse.ArgumentParser(description='Sync SubRip subtitle with audio')
@@ -12,7 +12,7 @@ def parse_args():
 def main():
     args = parse_args()
     with open(args.filename) as f:
-        document = subrip.process_document(f, args.lag)
+        document = process_document(f, args.lag)
     if args.backup:
         p = Path(args.filename)
         p.rename(f'{args.filename}.bak')
