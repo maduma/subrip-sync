@@ -3,5 +3,5 @@ requires-python = ">=3.6"
 
 [[package]]
 name = "subrip-sync"
-version = "0.1.2"
+version = "0.1.3"
 source = { editable = "." }

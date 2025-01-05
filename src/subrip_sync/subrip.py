@@ -21,5 +21,5 @@ pattern = re.compile(r'\d+:\d{2}:\d{2},\d{3}')
 def process_line(line, lag_ms):
     return pattern.sub(lambda m: shift_timecode(m.group(0), lag_ms), line)
 
-def process_document(lines, lag_ms):
+def subtitles_shift_ms(lines, lag_ms):
     return ''.join(process_line(line, lag_ms) for line in lines)

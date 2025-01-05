@@ -29,7 +29,7 @@ class TestSubRip(unittest.TestCase):
         result = '...01:03:09,001 --> 01:13:06,059...'
         self.assertEqual(subrip.process_line(line, lag), result)
 
-    def test_process_doc(self):
+    def test_subtitles_shift_ms(self):
         doc1 = '''
 1
 00:01:24,210 --> 00:01:25,503
@@ -50,4 +50,4 @@ class TestSubRip(unittest.TestCase):
 "Je vis un nouveau Ciel.
 
 '''
-        self.assertEqual(subrip.process_document(doc1.splitlines(keepends=True), 120), doc2)
+        self.assertEqual(subrip.subtitles_shift_ms(doc1.splitlines(keepends=True), 120), doc2)
