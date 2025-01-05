@@ -1,27 +1,27 @@
 import unittest
 from . import subrip
 
-class TestSubRipMethods(unittest.TestCase):
-    def test_parse_timecode(self):
+class TestSubRip(unittest.TestCase):
+    def test_timecode_to_milliseconds(self):
         tc = '23:12:04,657'
-        timestamp = 23 * 3600_000 + 12 * 60_000 + 4 * 1000 + 657
-        self.assertEqual(subrip.parse_timecode(tc), timestamp)
+        ts = 23 * 3600_000 + 12 * 60_000 + 4 * 1000 + 657
+        self.assertEqual(subrip.timecode_to_milliseconds(tc), ts)
 
-    def test_strf_timestamp(self):
-        timestamp = 23 * 3600_000 + 12 * 60_000 + 4 * 1000 + 657
+    def test_milliseconds_to_timecode(self):
+        ts = 23 * 3600_000 + 12 * 60_000 + 4 * 1000 + 657
         tc = '23:12:04,657'
-        self.assertEqual(subrip.strf_timestamp(timestamp), tc)
+        self.assertEqual(subrip.milliseconds_to_timecode(ts), tc)
 
-    def test_strf_timestamp_big(self):
-        timestamp = 223 * 3600_000 + 2 * 60_000 + 4 * 1000 + 57
+    def test_milliseconds_to_timecode_big(self):
+        ts = 223 * 3600_000 + 2 * 60_000 + 4 * 1000 + 57
         tc = '223:02:04,057'
-        self.assertEqual(subrip.strf_timestamp(timestamp), tc)
+        self.assertEqual(subrip.milliseconds_to_timecode(ts), tc)
 
-    def test_process_timecode(self):
+    def test_shift_timecode(self):
         tc1 = '01:02:14,949'
         tc2 = '01:02:19,131'
         lag = 4182
-        self.assertEqual(subrip.process_timecode(tc1, lag), tc2)
+        self.assertEqual(subrip.shift_timecode(tc1, lag), tc2)
 
     def test_process_line(self):
         line = '...01:02:04,999 --> 01:12:02,057...'
