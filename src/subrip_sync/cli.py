@@ -1,6 +1,6 @@
 import argparse
 from pathlib import Path
-from .subrip import subtitles_shift_ms
+from .subrip import subtitles_shift
 
 def parse_args():
     parser = argparse.ArgumentParser(description='Sync SubRip subtitle with audio')
@@ -12,7 +12,7 @@ def parse_args():
 def main():
     args = parse_args()
     with open(args.filename) as f:
-        document = subtitles_shift_ms(f, args.lag)
+        document = subtitles_shift(f, args.lag)
     if args.backup:
         p = Path(args.filename)
         p.rename(f'{args.filename}.bak')

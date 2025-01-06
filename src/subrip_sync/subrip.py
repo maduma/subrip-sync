@@ -13,13 +13,13 @@ def milliseconds_to_timecode(milliseconds):
     hours = milliseconds // 3600_000
     return f'{hours:02d}:{minutes:02d}:{seconds:02d},{ms:03d}'
 
-def shift_timecode(timecode, lag_ms):
+def timecode_shift(timecode, lag_ms):
     ts = timecode_to_milliseconds(timecode)
     return milliseconds_to_timecode(ts + lag_ms)
 
 pattern = re.compile(r'\d+:\d{2}:\d{2},\d{3}')
 def process_line(line, lag_ms):
-    return pattern.sub(lambda m: shift_timecode(m.group(0), lag_ms), line)
+    return pattern.sub(lambda m: timecode_shift(m.group(0), lag_ms), line)
 
-def subtitles_shift_ms(lines, lag_ms):
+def subtitles_shift(lines, lag_ms):
     return ''.join(process_line(line, lag_ms) for line in lines)

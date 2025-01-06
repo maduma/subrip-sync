@@ -17,11 +17,11 @@ class TestSubRip(unittest.TestCase):
         tc = '223:02:04,057'
         self.assertEqual(subrip.milliseconds_to_timecode(ts), tc)
 
-    def test_shift_timecode(self):
+    def test_timecode_shift(self):
         tc1 = '01:02:14,949'
         tc2 = '01:02:19,131'
         lag = 4182
-        self.assertEqual(subrip.shift_timecode(tc1, lag), tc2)
+        self.assertEqual(subrip.timecode_shift(tc1, lag), tc2)
 
     def test_process_line(self):
         line = '...01:02:04,999 --> 01:12:02,057...'
@@ -29,7 +29,7 @@ class TestSubRip(unittest.TestCase):
         result = '...01:03:09,001 --> 01:13:06,059...'
         self.assertEqual(subrip.process_line(line, lag), result)
 
-    def test_subtitles_shift_ms(self):
+    def test_subtitles_shift(self):
         doc1 = '''
 1
 00:01:24,210 --> 00:01:25,503
@@ -50,4 +50,4 @@ class TestSubRip(unittest.TestCase):
 "Je vis un nouveau Ciel.
 
 '''
-        self.assertEqual(subrip.subtitles_shift_ms(doc1.splitlines(keepends=True), 120), doc2)
+        self.assertEqual(subrip.subtitles_shift(doc1.splitlines(keepends=True), 120), doc2)
